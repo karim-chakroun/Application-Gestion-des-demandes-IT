@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models;
 
-namespace WebApplication1.Migrations.Authentication
+namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
     partial class AuthenticationContextModelSnapshot : ModelSnapshot

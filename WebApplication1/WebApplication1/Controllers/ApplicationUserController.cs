@@ -35,16 +35,21 @@ namespace WebApplication1.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> PostApplicationUser(ApplicationUserModel model)
         {
+            model.Role = "Customer";
             var applicationUser = new ApplicationUser()
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                FullName = model.FullName
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
+                
+
             };
 
             try 
             {
                 var result =await _UserManager.CreateAsync(applicationUser,model.Password);
+                await _UserManager.AddToRoleAsync(applicationUser, model.Role);
                 return Ok(result);
             
             }
@@ -63,11 +68,16 @@ namespace WebApplication1.Controllers
             var user = await _UserManager.FindByNameAsync(model.UserName);
             if (user != null && await _UserManager.CheckPasswordAsync(user, model.Password))
             {
+                //Get role assigned to the user
+                var role = await _UserManager.GetRolesAsync(user);
+                IdentityOptions _options = new IdentityOptions();
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim("UserID",user.Id.ToString())
+                        new Claim("UserID",user.Id.ToString()),
+                        new Claim(_options.ClaimsIdentity.RoleClaimType,role.FirstOrDefault())
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(10),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)

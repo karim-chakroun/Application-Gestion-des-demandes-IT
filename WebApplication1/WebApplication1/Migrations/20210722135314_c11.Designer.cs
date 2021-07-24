@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models;
 
-namespace WebApplication1.Migrations.Authentication
+namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20210707155127_initial")]
-    partial class initial
+    [Migration("20210722135314_c11")]
+    partial class c11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApplication1
 {
@@ -46,6 +47,7 @@ namespace WebApplication1
                 );
 
             services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
             services.AddCors();
@@ -73,6 +75,8 @@ namespace WebApplication1
 
                 };
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

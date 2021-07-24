@@ -31,9 +31,26 @@ namespace WebApplication1.Controllers
             {
                 user.FullName,
                 user.Email,
-                user.UserName
+                user.UserName,
+                user.PhoneNumber
+                
             };
         }
 
+        [HttpGet]
+        [Authorize(Roles ="Agent")]
+        [Route("ForAgent")]
+        public string GetForAgent()
+        {
+            return "web method for Agent";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer")]
+        [Route("ForCustomer")]
+        public string GetForCustomer()
+        {
+            return "web method for customer";
+        }
     }
 }
