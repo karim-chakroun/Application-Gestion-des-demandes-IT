@@ -76,6 +76,12 @@ namespace WebApplication1
                 };
             });
 
+            services.AddDbContext<requestsContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("requestsContext")));
+
+            services.AddDbContext<requestsContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("requestsContext")));
+
             
         }
 

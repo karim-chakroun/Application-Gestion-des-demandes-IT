@@ -18,9 +18,12 @@ namespace WebApplication1.Models
         public string Description { get; set; }
         public string customer { get; set; }
         public string Agent { get; set; }
-        public string ImageName { get; set; }
-        [NotMapped]
-        public IFormFile ImageFile { get; set; }
+
+        public virtual ICollection<comments> Comments { get; set; }
+        //public string ImageName { get; set; }
+        //[NotMapped]
+        //public IFormFile ImageFile { get; set; }
+
 
 
     }

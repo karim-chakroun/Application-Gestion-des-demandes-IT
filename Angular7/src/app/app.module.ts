@@ -12,8 +12,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { AgentPanelComponent } from './agent-panel/agent-panel.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AgentPanelComponent } from './home/agent-panel/agent-panel.component';
+import { ForbiddenComponent } from './home/forbidden/forbidden.component';
+import { ProfilComponent } from './home/profil/profil.component';
+import { AcceuilComponent } from './home/acceuil/acceuil.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 @NgModule({
   declarations: [
@@ -23,14 +29,19 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     LoginComponent,
     HomeComponent,
     AgentPanelComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    ProfilComponent,
+    AcceuilComponent,
+    TicketDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSliderModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService, {
     provide : HTTP_INTERCEPTORS,

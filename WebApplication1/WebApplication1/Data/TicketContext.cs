@@ -15,5 +15,6 @@ namespace WebApplication1.Data
         }
 
         public DbSet<WebApplication1.Models.Ticket> Ticket { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

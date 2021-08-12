@@ -84,7 +84,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<ActionResult<Ticket>> PostTicket([FromForm]Ticket ticket)
         {
-            ticket.ImageName = await SaveImage(ticket.ImageFile);
+           // ticket.ImageName = await SaveImage(ticket.ImageFile);
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
 

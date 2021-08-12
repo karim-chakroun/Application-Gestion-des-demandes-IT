@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router,private service:UserService) { }
 
   ngOnInit() {
+    this.router.navigate(['/home/acceuil']);
     this.service.getUserProfile().subscribe(
       res =>{
         this.userDetails = res;

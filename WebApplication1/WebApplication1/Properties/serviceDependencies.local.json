@@ -7,6 +7,14 @@
     "mssql2": {
       "type": "mssql.local",
       "connectionId": "GroupContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "requestsContext"
+    },
+    "mssql4": {
+      "type": "mssql.local",
+      "connectionId": "CommentsContext"
     }
   }
 }
