@@ -18,7 +18,6 @@ import { ProfilComponent } from './home/profil/profil.component';
 import { AcceuilComponent } from './home/acceuil/acceuil.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -40,7 +39,6 @@ import { MatSliderModule } from '@angular/material/slider';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MatSliderModule,
     BrowserAnimationsModule
   ],
   providers: [UserService, {
