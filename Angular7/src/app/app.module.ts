@@ -18,6 +18,9 @@ import { ProfilComponent } from './home/profil/profil.component';
 import { AcceuilComponent } from './home/acceuil/acceuil.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -39,6 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
   providers: [UserService, {

@@ -30,7 +30,8 @@ export class TicketService {
     Status: [''],
     Agent:[''],
     Description:[''],
-    customer:['']
+    customer:[''],
+    Priorite:['']
   });
   
   StatusTicket(id,nom,dt,st,c,ds) {
@@ -55,7 +56,8 @@ export class TicketService {
       DateT: myDate,
       Status: 'waiting',
       customer: data,
-      Description:this.formModel.value.Description
+      Description:this.formModel.value.Description,
+      Priorite:this.formModel.value.Priorite
     };
     return this.http.post(this.BaseURI + '/requests', body);
   }

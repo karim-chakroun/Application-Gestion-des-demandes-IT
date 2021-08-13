@@ -119,4 +119,6 @@ export class AgentPanelComponent implements OnInit {
     );
   }
 
+  Search(){}
+
 }
