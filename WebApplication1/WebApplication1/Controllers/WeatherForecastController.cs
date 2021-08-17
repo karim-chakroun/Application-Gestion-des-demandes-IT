@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MimeKit;
+using MimeKit.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +30,27 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+
+            // create email message
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("karim951369@gmail.com"));
+            email.To.Add(MailboxAddress.Parse("karim.chakroun@outlook.com"));
+            email.Subject = "Test Email Subject";
+            email.Body = new TextPart(TextFormat.Plain) { Text = "Example Plain Text Message Body" };
+
+            
+            string emailAdress = "karim951369@gmail.com";
+            
+            string Passwordd = "8Cfa1afuck.";
+
+            // send email
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.None);
+            smtp.Authenticate(emailAdress,Passwordd);
+            smtp.Send(email);
+            smtp.Disconnect(true);
+
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

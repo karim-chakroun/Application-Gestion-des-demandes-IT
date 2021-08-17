@@ -11,24 +11,12 @@
 <label>Priorite</label>
 </div>
 <mat-radio-group aria-label="Select an option" formControlName="Priorite">
-  <mat-radio-button value="1">Faible</mat-radio-button>
-  <mat-radio-button value="2">Critique</mat-radio-button>
+  <mat-radio-button value="Faible">Faible</mat-radio-button>
+  <mat-radio-button value="Critique">Critique</mat-radio-button>
 </mat-radio-group>
 <div class="form-row">
   <div class="form-group col-md-8 offset-md-2">
     <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Add Ticket</button>
   </div>
 </div>
-</form>
-
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
 </form>

@@ -22,6 +22,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+
+import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -45,7 +51,12 @@ import {MatInputModule} from '@angular/material/input';
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    BrowserAnimationsModule,
+
+    DataTablesModule
   ],
   providers: [UserService, {
     provide : HTTP_INTERCEPTORS,

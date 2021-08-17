@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnDestroy, OnInit } from '@angular/core';
 import { TicketService } from '../../shared/ticket.service';
 import { UserService } from '../../shared/user.service';
+
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-agent-panel',
   templateUrl: './agent-panel.component.html',
   styleUrls: ['./agent-panel.component.css']
 })
-export class AgentPanelComponent implements OnInit {
+export class AgentPanelComponent implements OnDestroy, OnInit {
 
   requests;
+  request;
   TicketDetails;
+  fName:any;
+
+  dtTrigger: Subject<any> = new Subject<any>();
+  dtOptions: DataTables.Settings = {};
 
 
   constructor(private service:TicketService) { }
@@ -19,12 +26,30 @@ export class AgentPanelComponent implements OnInit {
     this.service.getTickets().subscribe(
       res =>{
         this.requests = res;
+        this.dtTrigger.next();
       },
       err =>{
         console.log(err);
       }
 
     );
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
+  }
+
+  Tickets(): void {
+    this.service
+        .getTickets()
+        .subscribe((response: any) => {
+          this.request = response;
+          // initiate our data table
+          this.dtTrigger.next();
+        });
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
   onSubmit(d) {
@@ -118,7 +143,41 @@ export class AgentPanelComponent implements OnInit {
       
     );
   }
+/*
+  Search(){
+    if(this.fName == ""){
+      this.ngOnInit();
+    } else {
+      this.requests.filter(res =>{
+        return res.fName.toLocaleLowerCase().match(this.fName.toLocaleLowerCase());
+      });
+    }
+  }
+  */
+ /*
+  key:string ='id';
+  reverse:boolean = false;
+  sort(key){
+    this.key= key;
+    this.reverse = !this.reverse;
+  }
+  */
+  
+/*
+  sortP(key){
+    this.key= key;
+    this.reverse = !this.reverse;
 
-  Search(){}
+  }
+*/
+  
+
+
+
+
+
+
+
+
 
 }

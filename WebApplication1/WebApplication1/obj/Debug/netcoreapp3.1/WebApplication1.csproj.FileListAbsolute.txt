@@ -499,3 +499,6 @@ D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplicat
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

@@ -1,29 +1,20 @@
-<div class="row">
-  <div class="card" style="width:50rem" *ngIf="requests">
-    <div class=".ps-child">
-    <div class="card-header">
-      <h4 class="card-title"> Simple Table</h4>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table" >
-          <thead class=" text-primary">
-            <th>
-              Ticket name
-            </th>
-            <th>
-              Status
-            </th>
-            <th>
-              Date
-            </th>
-            <th class="text-right">
-              Submitted by
-            </th>
-          </thead>
-          <tbody *ngFor="let s of requests">
-            <tr>
-              <td>
+<div class="container">
+  <div class="card m-5 p-3">
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+              <thead>
+              <tr>
+                  <th>Ticket name</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Submitted By</th>
+                  <th>Priorite</th>
+                  <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let s of requests">
+                  <td>
                 {{s.nameT}} 
               </td>
               <td>
@@ -36,42 +27,48 @@
                 {{s.customer}}
               </td>
               <td>
+                {{s.priorite}}
+              </td>
+              <td>
                 <button (click)="onSubmit(s.requestsId)" class="btn btn-info btn-block" >Afficher</button>
               </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  </div>
+              </tr>
+              </tbody>
+          </table>
 
-
-  <div class="col-sm-6">
-    <div class="card" style="width:30rem" *ngIf="TicketDetails">
-      <div class="card-body">
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
-          <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
-          <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
-          <li class="list-group-item"><strong>Status: </strong>{{TicketDetails.status}} </li>
-          <li class="list-group-item"><strong>Submitted By: </strong>{{TicketDetails.customer}} </li>
-          <li class="list-group-item"><strong>comments: </strong>{{TicketDetails.id}} </li>
-        </ul>
-      
-      
-      <div class="btn-group" style="width:10rem">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Action
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">To do</a>
-          <a class="dropdown-item" (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">In progress</a>
-          <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">Done</a>
-        </div>
+          <div class="col-sm-6">
+            <div class="card" style="width:30rem" *ngIf="TicketDetails">
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
+                  <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
+                  <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
+                  <li class="list-group-item"><strong>Status: </strong>{{TicketDetails.status}} </li>
+                  <li class="list-group-item"><strong>Submitted By: </strong>{{TicketDetails.customer}} </li>
+                  <li class="list-group-item"><strong>comments: </strong>{{TicketDetails.id}} </li>
+                </ul>
+              
+              
+              <div class="btn-group" style="width:10rem">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Action
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">To do</a>
+                  <a class="dropdown-item" (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">In progress</a>
+                  <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">Done</a>
+                </div>
+              </div>
+              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
+            </div>
+          </div>
       </div>
-      <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
-    </div>
-  </div>
+
   </div>
 </div>
+
+
+
+
+
+
