@@ -28,6 +28,9 @@ import {Ng2OrderModule} from 'ng2-order-pipe';
 
 import { DataTablesModule } from "angular-datatables";
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +56,8 @@ import { DataTablesModule } from "angular-datatables";
     MatInputModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    MatButtonModule,
+    MatIconModule,
     Ng2OrderModule,
     BrowserAnimationsModule,
 

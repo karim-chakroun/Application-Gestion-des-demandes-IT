@@ -1,13 +1,11 @@
-﻿using MailKit.Net.Smtp;
-using MailKit.Security;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MimeKit;
-using MimeKit.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
 
 namespace WebApplication1.Controllers
 {
@@ -30,26 +28,14 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            //var smtpClient = new SmtpClient("smtp.gmail.com")
+            //{
+            //    Port = 587,
+            //    Credentials = new NetworkCredential("karim951369@gmail.com", "deztnkpqqherkump"),
+            //    EnableSsl = true,
+            //};
 
-            // create email message
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("karim951369@gmail.com"));
-            email.To.Add(MailboxAddress.Parse("karim.chakroun@outlook.com"));
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Plain) { Text = "Example Plain Text Message Body" };
-
-            
-            string emailAdress = "karim951369@gmail.com";
-            
-            string Passwordd = "8Cfa1afuck.";
-
-            // send email
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.None);
-            smtp.Authenticate(emailAdress,Passwordd);
-            smtp.Send(email);
-            smtp.Disconnect(true);
-
+            //smtpClient.Send("karim951369@gmail.com", "karim.chakroun@esprit.tn", "hello", "hello world");
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

@@ -10,6 +10,7 @@
                   <th>Submitted By</th>
                   <th>Priorite</th>
                   <th>Action</th>
+                  <th>Delete</th>
               </tr>
               </thead>
               <tbody>
@@ -32,6 +33,10 @@
               <td>
                 <button (click)="onSubmit(s.requestsId)" class="btn btn-info btn-block" >Afficher</button>
               </td>
+              <td><button (click)="onDelete(s.requestsId)" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+              </td>
               </tr>
               </tbody>
           </table>
@@ -43,9 +48,10 @@
                   <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
                   <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
                   <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
-                  <li class="list-group-item"><strong>Status: </strong>{{TicketDetails.status}} </li>
-                  <li class="list-group-item"><strong>Submitted By: </strong>{{TicketDetails.customer}} </li>
-                  <li class="list-group-item"><strong>comments: </strong>{{TicketDetails.id}} </li>
+                  <li class="list-group-item"><strong>Status : </strong>{{TicketDetails.status}} </li>
+                  <li class="list-group-item"><strong>Priorite : </strong>{{TicketDetails.priorite}} </li>
+                  <li class="list-group-item"><strong>Submitted By : </strong>{{TicketDetails.customer}} </li>
+                  <li class="list-group-item"><strong>User Email : </strong>{{TicketDetails.uEmail}} </li>
                 </ul>
               
               
@@ -54,12 +60,12 @@
                   Action
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">To do</a>
-                  <a class="dropdown-item" (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">In progress</a>
-                  <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)">Done</a>
+                  <a class="dropdown-item" (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">To do</a>
+                  <a class="dropdown-item" (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">In progress</a>
+                  <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">Done</a>
                 </div>
               </div>
-              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
+              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
             </div>
           </div>
       </div>

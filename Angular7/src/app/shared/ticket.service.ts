@@ -20,6 +20,13 @@ export class TicketService {
     return this.http.get(this.BaseURI+ '/requests/' + id);
   }
 
+  deleteTicket(id){
+    
+    return this.http.delete(this.BaseURI+ '/requests/' + id);
+  }
+
+  
+
   
 
 
@@ -34,12 +41,14 @@ export class TicketService {
     Priorite:['']
   });
   
-  StatusTicket(id,nom,dt,st,c,ds) {
+  StatusTicket(id,nom,dt,st,c,ds,De,p) {
     var body = {
       RequestsId: id,
       NameT: nom,
       DateT: dt,
       Status: st,
+      uEmail: De,
+      Priorite:p,
       customer: c,
       description: ds
 
@@ -50,15 +59,26 @@ export class TicketService {
 
   
 
-  PostTicket(data,myDate = new Date()) {
+  PostTicket(data,De,myDate = new Date()) {
     var body = {
       NameT: this.formModel.value.NameT,
       DateT: myDate,
       Status: 'waiting',
       customer: data,
       Description:this.formModel.value.Description,
-      Priorite:this.formModel.value.Priorite
+      Priorite:this.formModel.value.Priorite,
+      uEmail: De
     };
     return this.http.post(this.BaseURI + '/requests', body);
+  }
+
+  EmailNotif(toId,toName,sub,eBody){
+    var body = {
+    EmailToId:toId,
+    EmailToName:toName,
+    EmailSubject:sub,
+    EmailBody:eBody
+    };
+    return this.http.post(this.BaseURI + '/Email', body);
   }
 }

@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         public string Description { get; set; }
         public string customer { get; set; }
         public string Priorite { get; set; }
+        public string uEmail { get; set; }
         public string Agent { get; set; }
         public ICollection<comments> Comments { get; set; }
     }

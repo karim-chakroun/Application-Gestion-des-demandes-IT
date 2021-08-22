@@ -64,8 +64,21 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     );
   }
 
-  Accepter(i,n,d,a,s) {
-    this.service.StatusTicket(i,n,d,'Accepté',a,s).subscribe(
+  onDelete(d) {
+    this.service.deleteTicket(d).subscribe(
+      res =>{
+        this.TicketDetails = res;
+        this.ngOnInit();
+      },
+      err =>{
+        console.log(err);
+      }
+
+    );
+  }
+
+  Accepter(i,n,d,a,s,t,p) {
+    this.service.StatusTicket(i,n,d,'Accepté',a,s,t,p).subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.onSubmit(i);
@@ -80,8 +93,9 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     );
   }
 
-  toDo(i,n,d,a,s) {
-    this.service.StatusTicket(i,n,d,'In queue',a,s).subscribe(
+  toDo(i,n,d,a,s,t,p) {
+    this.service.EmailNotif(t,a,'Ticket accepted','your submittion is in queue, estimated time: between 1 and 3 days').subscribe();
+    this.service.StatusTicket(i,n,d,'In queue',a,s,t,p).subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.onSubmit(i);
@@ -96,8 +110,9 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     );
   }
 
-  inProg(i,n,d,a,s) {
-    this.service.StatusTicket(i,n,d,'In progress',a,s).subscribe(
+  inProg(i,n,d,a,s,t,p) {
+    this.service.EmailNotif(t,a,'In progress','The agent started working on your request, estimated time: 24 hours').subscribe();
+    this.service.StatusTicket(i,n,d,'In progress',a,s,t,p).subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.onSubmit(i);
@@ -112,8 +127,9 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     );
   }
 
-  tDone(i,n,d,a,s) {
-    this.service.StatusTicket(i,n,d,'Done',a,s).subscribe(
+  tDone(i,n,d,a,s,t,p) {
+    this.service.EmailNotif(t,a,'Problem solved','Your problem is solved if you need any help send us another request').subscribe();
+    this.service.StatusTicket(i,n,d,'Done',a,s,t,p).subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.onSubmit(i);
@@ -128,8 +144,9 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     );
   }
 
-  Refuser(i,n,d,a,s) {
-    this.service.StatusTicket(i,n,d,'Refusé',a,s).subscribe(
+  Refuser(i,n,d,a,s,t,p) {
+    this.service.EmailNotif(t,a,'in prog test','body').subscribe();
+    this.service.StatusTicket(i,n,d,'Refusé',a,s,t,p).subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.onSubmit(i);
