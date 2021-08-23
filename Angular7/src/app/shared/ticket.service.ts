@@ -38,7 +38,8 @@ export class TicketService {
     Agent:[''],
     Description:[''],
     customer:[''],
-    Priorite:['']
+    Priorite:[''],
+    content:['']
   });
   
   StatusTicket(id,nom,dt,st,c,ds,De,p) {
@@ -80,5 +81,18 @@ export class TicketService {
     EmailBody:eBody
     };
     return this.http.post(this.BaseURI + '/Email', body);
+  }
+
+  commentModel = this.fb.group({
+    content: ['']
+  });
+
+  commentTicket(nom,rqId) {
+    var body = {
+      content:this.formModel.value.content,
+      userName:nom,
+      requestsId:rqId
+    };
+    return this.http.post(this.BaseURI + '/comments', body);
   }
 }

@@ -66,7 +66,24 @@
                 </div>
               </div>
               <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
+
+              
+
+
             </div>
+
+            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onComment(TicketDetails.userName,TicketDetails.requestsId)">
+              <div class="form-group col-md-6">
+                <label>Your comment</label>
+                <textarea class="form-control" formControlName="content"></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group offset-md-1">
+                  <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Comment</button>
+                </div>
+              </div>
+              </form>
+
           </div>
       </div>
 

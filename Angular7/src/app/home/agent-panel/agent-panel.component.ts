@@ -160,6 +160,23 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
       
     );
   }
+
+
+  onComment(d,e) {
+    this.service.commentTicket(d,e).subscribe(
+      (res: any) => {
+        if (res.succeeded) {
+          this.service.formModel.reset();
+          //this.toastr.success('New user created!', 'Registration successful.');
+        } else {
+          err => {
+            console.log(err);
+          }
+        }
+      }
+      
+    );
+  }
 /*
   Search(){
     if(this.fName == ""){
