@@ -10,24 +10,27 @@ import { ProfilComponent } from './home/profil/profil.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserComponent } from './user/user.component';
+import { MyTicketComponent } from './my-ticket/my-ticket.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/user/login',pathMatch:'full'},
+  { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
-    path:'user',component:UserComponent,
-  children:[
-    {path:'registration',component:RegistrationComponent},
-    {path:'login',component:LoginComponent}
-  ]
-},
-{path:'home',component:HomeComponent,canActivate:[AuthGuard],
-children:[
-  {path:'acceuil',component:AcceuilComponent},
-  {path:'profil',component:ProfilComponent},
-  {path:'agentpanel',component:AgentPanelComponent,canActivate:[AuthGuard],data :{permittedRoles:['Agent']}},
-{path:'forbidden',component:ForbiddenComponent}
-]
-}
+    path: 'user', component: UserComponent,
+    children: [
+      { path: 'registration', component: RegistrationComponent },
+      { path: 'login', component: LoginComponent }
+    ]
+  },
+  {
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard],
+    children: [
+      { path: 'acceuil', component: AcceuilComponent },
+      { path: 'profil', component: ProfilComponent },
+      { path: 'agentpanel', component: AgentPanelComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Agent'] } },
+      { path: 'myticket', component: MyTicketComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Customer'] } },
+      { path: 'forbidden', component: ForbiddenComponent }
+    ]
+  }
 ];
 
 @NgModule({

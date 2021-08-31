@@ -502,3 +502,9 @@ D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplicat
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\MailKit.dll
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\MimeKit.dll
 D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Users\Lenovo\source\repos\Gestion des demandes IT\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

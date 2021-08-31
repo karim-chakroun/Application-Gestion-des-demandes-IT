@@ -30,6 +30,7 @@ import { DataTablesModule } from "angular-datatables";
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { MyTicketComponent } from './my-ticket/my-ticket.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     ForbiddenComponent,
     ProfilComponent,
     AcceuilComponent,
-    TicketDetailsComponent
+    TicketDetailsComponent,
+    MyTicketComponent
   ],
   imports: [
     BrowserModule,

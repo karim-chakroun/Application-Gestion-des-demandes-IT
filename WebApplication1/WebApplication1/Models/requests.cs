@@ -18,6 +18,7 @@ namespace WebApplication1.Models
         public string Priorite { get; set; }
         public string uEmail { get; set; }
         public string Agent { get; set; }
+        public string PhotoFileName { get; set; }
         public ICollection<comments> Comments { get; set; }
     }
 }

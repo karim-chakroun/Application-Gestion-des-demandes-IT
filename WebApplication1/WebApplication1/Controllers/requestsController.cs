@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApplication1.Controllers
 {
@@ -15,10 +18,12 @@ namespace WebApplication1.Controllers
     public class requestsController : ControllerBase
     {
         private readonly requestsContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public requestsController(requestsContext context)
+        public requestsController(requestsContext context,IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: api/requests
@@ -107,6 +112,30 @@ namespace WebApplication1.Controllers
         private bool requestsExists(int? id)
         {
             return _context.requests.Any(e => e.RequestsId == id);
+        }
+
+        [Route("SaveFile")]
+        [HttpPost]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _env.ContentRootPath + "images" + filename;
+
+                using(var stream=new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+                return new JsonResult(filename);
+            }
+            catch (Exception)
+            {
+
+                return new JsonResult("anonymous.jpg");
+            }
         }
     }
 }

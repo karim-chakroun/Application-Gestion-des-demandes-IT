@@ -13,7 +13,9 @@ export class ForbiddenComponent implements OnInit {
   constructor(public service: TicketService,private router:Router,private Uservice:UserService) { }
 
   Usdetails;
+  myTicket;
   ngOnInit() {
+    
     this.Uservice.getUserProfile().subscribe(
       res =>{
         this.Usdetails = res;
@@ -27,15 +29,16 @@ export class ForbiddenComponent implements OnInit {
   onSubmit(d,e) {
     this.service.PostTicket(d,e).subscribe(
       (res: any) => {
-        if (res.succeeded) {
+        
+          this.myTicket = res;
           this.service.formModel.reset();
           //this.toastr.success('New user created!', 'Registration successful.');
-        } else {
+      },
           err => {
             console.log(err);
           }
-        }
-      }
+        
+      
       
     );
   }

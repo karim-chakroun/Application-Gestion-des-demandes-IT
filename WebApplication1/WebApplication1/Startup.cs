@@ -21,6 +21,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using WebApplication1.Configuration;
 using WebApplication1.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace WebApplication1
 {
@@ -115,6 +117,13 @@ namespace WebApplication1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(),"images")),
+                RequestPath = "/images"
             });
         }
     }

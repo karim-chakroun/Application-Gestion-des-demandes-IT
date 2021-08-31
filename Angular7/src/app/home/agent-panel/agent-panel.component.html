@@ -52,6 +52,7 @@
                   <li class="list-group-item"><strong>Priorite : </strong>{{TicketDetails.priorite}} </li>
                   <li class="list-group-item"><strong>Submitted By : </strong>{{TicketDetails.customer}} </li>
                   <li class="list-group-item"><strong>User Email : </strong>{{TicketDetails.uEmail}} </li>
+                  <img src="../../../../../WebApplication1/WebApplication1imagesmohaned media.jpg">
                 </ul>
               
               
@@ -65,14 +66,24 @@
                   <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">Done</a>
                 </div>
               </div>
-              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
+              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
 
               
 
 
             </div>
 
-            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onComment(TicketDetails.userName,TicketDetails.requestsId)">
+            
+              <ul *ngFor="let t of comments">
+                <div *ngIf="t.requestsId==TicketDetails.requestsId">
+                <li><strong>Username: </strong>{{t.userName}} </li>
+                <li class="list-group-item"><strong>Comment: </strong>{{t.content}} </li>
+              </div>
+              </ul>
+            
+
+              <div *ngIf="Usdetails">
+            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onComment(Usdetails.userName,TicketDetails.requestsId)">
               <div class="form-group col-md-6">
                 <label>Your comment</label>
                 <textarea class="form-control" formControlName="content"></textarea>
@@ -83,6 +94,7 @@
                 </div>
               </div>
               </form>
+            </div>
 
           </div>
       </div>

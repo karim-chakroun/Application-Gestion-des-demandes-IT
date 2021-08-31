@@ -25,6 +25,11 @@ export class TicketService {
     return this.http.delete(this.BaseURI+ '/requests/' + id);
   }
 
+  getComments(){
+    
+    return this.http.get(this.BaseURI+ '/comments');
+  }
+
   
 
   
