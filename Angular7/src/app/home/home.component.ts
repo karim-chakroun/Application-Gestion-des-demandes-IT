@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifService } from '../shared/notif.service';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -9,14 +10,24 @@ import { UserService } from '../shared/user.service';
 })
 export class HomeComponent implements OnInit {
   userDetails;
+  notif;
 
-  constructor(private router:Router,private service:UserService) { }
+  constructor(private router:Router,private service:UserService,private notifService:NotifService) { }
 
   ngOnInit() {
     //this.router.navigate(['/home/acceuil']);
     this.service.getUserProfile().subscribe(
       res =>{
         this.userDetails = res;
+      },
+      err =>{
+        console.log(err);
+      }
+
+    );
+    this.notifService.getNotifications().subscribe(
+      res =>{
+        this.notif = res;
       },
       err =>{
         console.log(err);

@@ -17,5 +17,7 @@ namespace WebApplication1.Data
         public DbSet<WebApplication1.Models.requests> requests { get; set; }
 
         public DbSet<WebApplication1.Models.comments> comments { get; set; }
+
+        public DbSet<WebApplication1.Models.notification> notification { get; set; }
     }
 }

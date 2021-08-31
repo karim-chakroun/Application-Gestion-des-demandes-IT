@@ -4,6 +4,7 @@ import { UserService } from '../../shared/user.service';
 
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { NotifService } from 'src/app/shared/notif.service';
 
 @Component({
   selector: 'app-agent-panel',
@@ -18,12 +19,13 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
   TicketDetails;
   Usdetails;
   fName:any;
+  notif;
 
   dtTrigger: Subject<any> = new Subject<any>();
   dtOptions: DataTables.Settings = {};
 
 
-  constructor(private service:TicketService,private Uservice:UserService,private router:Router) { }
+  constructor(private service:TicketService,private Uservice:UserService,private router:Router,private notifService:NotifService) { }
 
   ngOnInit() {
     this.Uservice.getUserProfile().subscribe(
@@ -121,6 +123,7 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     this.service.EmailNotif(t,a,'Ticket accepted','your submittion is in queue, estimated time: between 1 and 3 days').subscribe();
     this.service.StatusTicket(i,n,d,'In queue',a,s,t,p).subscribe(
       (res: any) => {
+        this.notifService.PostNotif('ticket accepted',a).subscribe();
         
           this.onSubmit(i);
           location.reload();
@@ -140,6 +143,7 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     this.service.EmailNotif(t,a,'In progress','The agent started working on your request, estimated time: 24 hours').subscribe();
     this.service.StatusTicket(i,n,d,'In progress',a,s,t,p).subscribe(
       (res: any) => {
+        this.notifService.PostNotif('In progress',a).subscribe();
         
           this.onSubmit(i);
           location.reload();
@@ -159,6 +163,7 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     this.service.EmailNotif(t,a,'Problem solved','Your problem is solved if you need any help send us another request').subscribe();
     this.service.StatusTicket(i,n,d,'Done',a,s,t,p).subscribe(
       (res: any) => {
+        this.notifService.PostNotif('Problem solved',a).subscribe();
         
           this.onSubmit(i);
           location.reload();
@@ -178,6 +183,7 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
     this.service.EmailNotif(t,a,'Request rejected','Your request have been rejected').subscribe();
     this.service.StatusTicket(i,n,d,'Refusé',a,s,t,p).subscribe(
       (res: any) => {
+        this.notifService.PostNotif('Request rejected',a).subscribe();
         
           this.onSubmit(i);
           location.reload();
