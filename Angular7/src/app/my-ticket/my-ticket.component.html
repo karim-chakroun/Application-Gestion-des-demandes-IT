@@ -1,3 +1,77 @@
-<p>
-  my-ticket works!
-</p>
+<h4>My Tickets</h4>
+<table>
+  <thead>
+    <tr>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of requests">
+      <div *ngIf="Usdetails.userName==s.customer">
+        <td>
+          {{s.nameT}}
+        </td>
+        <td>
+          {{s.status}}
+        </td>
+        <td>
+          {{s.dateT}}
+        </td>
+        <td>
+          {{s.customer}}
+        </td>
+        <td>
+          {{s.priorite}}
+        </td>
+        <td>
+          <button (click)="onSubmit(s.requestsId)" class="btn btn-info btn-block">Afficher</button>
+        </td>
+        <td><button (click)="onDelete(s.requestsId)" mat-fab color="primary"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </div>
+    </tr>
+  </tbody>
+</table>
+<div class="col-sm-6">
+  <div class="card" style="width:30rem" *ngIf="TicketDetails">
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
+        <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
+        <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
+        <li class="list-group-item"><strong>Status : </strong>{{TicketDetails.status}} </li>
+        <li class="list-group-item"><strong>Priorite : </strong>{{TicketDetails.priorite}} </li>
+        <li class="list-group-item"><strong>Submitted By : </strong>{{TicketDetails.customer}} </li>
+        <li class="list-group-item"><strong>User Email : </strong>{{TicketDetails.uEmail}} </li>
+      </ul>
+    </div>
+
+
+    <ul *ngFor="let t of comments">
+      <div *ngIf="t.requestsId==TicketDetails.requestsId">
+        <li><strong>{{t.userName}}: </strong> </li>
+        <li class="list-group-item">{{t.content}} </li>
+      </div>
+    </ul>
+
+
+    <div *ngIf="Usdetails">
+      <form [formGroup]="service.formModel" autocomplete="off"
+        (submit)="onComment(Usdetails.userName,TicketDetails.requestsId)">
+        <div class="form-group col-md-6">
+          <label>Your comment</label>
+          <textarea class="form-control" formControlName="content"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group offset-md-1">
+            <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Comment</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

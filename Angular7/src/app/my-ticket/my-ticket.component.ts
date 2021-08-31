@@ -12,6 +12,7 @@ export class MyTicketComponent implements OnInit {
   Usdetails;
   comments;
   requests;
+  TicketDetails;
 
   constructor(private service:TicketService,private Uservice:UserService) { }
 
@@ -43,6 +44,58 @@ export class MyTicketComponent implements OnInit {
         console.log(err);
       }
 
+    );
+  }
+
+  
+
+  onSubmit(d) {
+    this.service.getTicketsById(d).subscribe(
+      res =>{
+        this.TicketDetails = res;
+      },
+      err =>{
+        console.log(err);
+      }
+
+    );
+  }
+
+  onDelete(d) {
+    this.service.deleteTicket(d).subscribe(
+      res =>{
+        
+        location.reload();
+        
+      },
+      err =>{
+        console.log(err);
+      }
+
+    );
+  }
+  onComment(d,e) {
+    this.service.commentTicket(d,e).subscribe(
+      (res: any) => {
+        
+          this.service.formModel.reset();
+          this.service.getComments().subscribe(
+            res =>{
+              this.comments = res;
+            },
+            err =>{
+              console.log(err);
+            }
+      
+          );
+          //this.toastr.success('New user created!', 'Registration successful.');
+        },
+          err => {
+            console.log(err);
+          }
+        
+      
+      
     );
   }
 

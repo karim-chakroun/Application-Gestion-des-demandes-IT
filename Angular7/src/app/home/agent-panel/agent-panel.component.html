@@ -1,109 +1,111 @@
 <div class="container">
   <div class="card m-5 p-3">
-      <div class="card-body">
-        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
-              <thead>
-              <tr>
-                  <th>Ticket name</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th>Submitted By</th>
-                  <th>Priorite</th>
-                  <th>Action</th>
-                  <th>Delete</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let s of requests">
-                  <td>
-                {{s.nameT}} 
-              </td>
-              <td>
-                {{s.status}} 
-              </td>
-              <td>
-                {{s.dateT}}
-              </td>
-              <td>
-                {{s.customer}}
-              </td>
-              <td>
-                {{s.priorite}}
-              </td>
-              <td>
-                <button (click)="onSubmit(s.requestsId)" class="btn btn-info btn-block" >Afficher</button>
-              </td>
-              <td><button (click)="onDelete(s.requestsId)" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <div class="card-body">
+      <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Ticket name</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Submitted By</th>
+            <th>Priorite</th>
+            <th>Action</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of requests">
+            <td>
+              {{s.nameT}}
+            </td>
+            <td>
+              {{s.status}}
+            </td>
+            <td>
+              {{s.dateT}}
+            </td>
+            <td>
+              {{s.customer}}
+            </td>
+            <td>
+              {{s.priorite}}
+            </td>
+            <td>
+              <button (click)="onSubmit(s.requestsId)" class="btn btn-info btn-block">Afficher</button>
+            </td>
+            <td><button (click)="onDelete(s.requestsId)" mat-fab color="primary"
+                aria-label="Example icon button with a delete icon">
                 <mat-icon>delete</mat-icon>
               </button>
-              </td>
-              </tr>
-              </tbody>
-          </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-          <div class="col-sm-6">
-            <div class="card" style="width:30rem" *ngIf="TicketDetails">
-              <div class="card-body">
-                <ul class="list-group">
-                  <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
-                  <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
-                  <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
-                  <li class="list-group-item"><strong>Status : </strong>{{TicketDetails.status}} </li>
-                  <li class="list-group-item"><strong>Priorite : </strong>{{TicketDetails.priorite}} </li>
-                  <li class="list-group-item"><strong>Submitted By : </strong>{{TicketDetails.customer}} </li>
-                  <li class="list-group-item"><strong>User Email : </strong>{{TicketDetails.uEmail}} </li>
-                  <img src="../../../../../WebApplication1/WebApplication1imagesmohaned media.jpg">
-                </ul>
-              
-              
-              <div class="btn-group" style="width:10rem">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Action
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">To do</a>
-                  <a class="dropdown-item" (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">In progress</a>
-                  <a class="dropdown-item" (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">Done</a>
-                </div>
+      <div class="col-sm-6">
+        <div class="card" style="width:30rem" *ngIf="TicketDetails">
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Objet : </strong>{{TicketDetails.nameT}} </li>
+              <li class="list-group-item"><strong>Date : </strong>{{TicketDetails.dateT}} </li>
+              <li class="list-group-item"><strong>Description : </strong>{{TicketDetails.description}} </li>
+              <li class="list-group-item"><strong>Status : </strong>{{TicketDetails.status}} </li>
+              <li class="list-group-item"><strong>Priorite : </strong>{{TicketDetails.priorite}} </li>
+              <li class="list-group-item"><strong>Submitted By : </strong>{{TicketDetails.customer}} </li>
+              <li class="list-group-item"><strong>User Email : </strong>{{TicketDetails.uEmail}} </li>
+              <img src="../../../../../WebApplication1/WebApplication1imagesmohaned media.jpg">
+            </ul>
+
+
+            <div class="btn-group" style="width:10rem">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Action
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"
+                  (click)="toDo(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">To
+                  do</a>
+                <a class="dropdown-item"
+                  (click)="inProg(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">In
+                  progress</a>
+                <a class="dropdown-item"
+                  (click)="tDone(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)">Done</a>
               </div>
-              <button style="width:10rem" (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)" class="btn btn-danger my-2 my-sm-0" >Refuser</button>
-
-              
-
-
             </div>
+            <button style="width:10rem"
+              (click)="Refuser(TicketDetails.requestsId,TicketDetails.nameT,TicketDetails.dateT,TicketDetails.customer,TicketDetails.description,TicketDetails.uEmail,TicketDetails.priorite)"
+              class="btn btn-danger my-2 my-sm-0">Refuser</button>
+          </div>
 
-            
-              <ul *ngFor="let t of comments">
-                <div *ngIf="t.requestsId==TicketDetails.requestsId">
-                <li><strong>Username: </strong>{{t.userName}} </li>
-                <li class="list-group-item"><strong>Comment: </strong>{{t.content}} </li>
-              </div>
-              </ul>
-            
 
-              <div *ngIf="Usdetails">
-            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onComment(Usdetails.userName,TicketDetails.requestsId)">
+          <ul *ngFor="let t of comments">
+            <div *ngIf="t.requestsId==TicketDetails.requestsId">
+              <li><strong>{{t.userName}}: </strong> </li>
+              <li class="list-group-item">{{t.content}} </li>
+            </div>
+          </ul>
+
+
+          <div *ngIf="Usdetails">
+            <form [formGroup]="service.formModel" autocomplete="off"
+              (submit)="onComment(Usdetails.userName,TicketDetails.requestsId)">
               <div class="form-group col-md-6">
                 <label>Your comment</label>
                 <textarea class="form-control" formControlName="content"></textarea>
               </div>
               <div class="form-row">
                 <div class="form-group offset-md-1">
-                  <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Comment</button>
+                  <button type="submit" class="btn btn-lg btn-block"
+                    [disabled]="!service.formModel.valid">Comment</button>
                 </div>
               </div>
-              </form>
-            </div>
-
+            </form>
           </div>
+
+        </div>
       </div>
 
+    </div>
   </div>
-</div>
-
-
-
-
-
-

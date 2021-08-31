@@ -199,6 +199,15 @@ export class AgentPanelComponent implements OnDestroy, OnInit {
       (res: any) => {
         
           this.service.formModel.reset();
+          this.service.getComments().subscribe(
+            res =>{
+              this.comments = res;
+            },
+            err =>{
+              console.log(err);
+            }
+      
+          );
           //this.toastr.success('New user created!', 'Registration successful.');
         },
           err => {

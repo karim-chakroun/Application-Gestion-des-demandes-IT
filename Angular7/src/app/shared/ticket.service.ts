@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import {formatDate} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -66,9 +67,10 @@ export class TicketService {
   
 
   PostTicket(data,De,myDate = new Date()) {
+    
     var body = {
       NameT: this.formModel.value.NameT,
-      DateT: myDate,
+      DateT: formatDate(new Date(), 'yyyy/MM/dd hh:mm', 'en'),
       Status: 'waiting',
       customer: data,
       Description:this.formModel.value.Description,
